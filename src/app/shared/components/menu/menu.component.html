@@ -1,0 +1,19 @@
+<ul nz-menu nzMode="horizontal" class="menu">
+  @if (!authenticated) {
+    <li nz-menu-item nzSelected [routerLink]="['/login']">
+      <button nz-button nzType="primary" (click)="login()">
+        <span nz-icon nzType="login" nzTheme="outline"></span>
+      </button>
+    </li>
+  } @else {
+    <div class="auth">
+      <li nz-menu-item [routerLink]="['/cadastro']">Cadastro</li>
+      <li nz-menu-item [routerLink]="['/atividades']">Atividades</li>
+    </div>
+    <li nz-menu-item nzSelected [routerLink]="['/login']">
+      <button nz-button nzType="primary" nzDanger (click)="logout()">
+        <span nz-icon nzType="logout" nzTheme="outline"></span>
+      </button>
+    </li>
+  }
+</ul>
