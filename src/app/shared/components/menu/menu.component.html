@@ -1,13 +1,10 @@
 <ul nz-menu nzMode="horizontal" class="menu">
   @if (!authenticated) {
     <li nz-menu-item nzSelected [routerLink]="['/login']">
-      <button nz-button nzType="primary" (click)="login()">
-        <span nz-icon nzType="login" nzTheme="outline"></span>
-      </button>
+      <button nz-button nzType="primary" (click)="login()"></button>
     </li>
   } @else {
     <div class="auth">
-      <li nz-menu-item [routerLink]="['/cadastro']">Cadastro</li>
       <li nz-menu-item [routerLink]="['/atividades']">Atividades</li>
     </div>
     <li nz-menu-item nzSelected [routerLink]="['/login']">

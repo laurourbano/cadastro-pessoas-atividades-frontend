@@ -11,6 +11,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { LoginService } from '../../../services/login.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -21,11 +23,13 @@ import {
     ReactiveFormsModule,
     NzInputModule,
     NzCardModule,
+    RouterModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  authenticated = false;
   validateForm: FormGroup<{
     email: FormControl<string>;
     password: FormControl<string>;
@@ -33,17 +37,28 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private fb: NonNullableFormBuilder,
+  ) {}
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      localStorage.setItem(
-        this.validateForm.controls.email.value,
-        this.validateForm.controls.password.value,
-      );
-    } else {
-      this.validateForm.markAllAsTouched();
+      this.loginService
+        .login(
+          this.validateForm.controls.email.value,
+          this.validateForm.controls.password.value,
+        )
+        .subscribe((res) => {
+          console.log(res);
+          if (res) {
+            this.authenticated = true;
+            this.router.navigate(['/atividades']);
+          } else {
+            this.validateForm.controls.password.setErrors({ invalid: true });
+          }
+        });
     }
   }
-
-  constructor(private fb: NonNullableFormBuilder) {}
 }

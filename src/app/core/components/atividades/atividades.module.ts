@@ -5,7 +5,7 @@ import { AtividadesRoutingModule } from './atividades-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ ],
   imports: [
     CommonModule,
     AtividadesRoutingModule

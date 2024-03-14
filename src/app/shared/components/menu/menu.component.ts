@@ -19,7 +19,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
-  authenticated = false;
+  authenticated = true;
 
   constructor(private router: Router) {}
 

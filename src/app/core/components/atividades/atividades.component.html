@@ -1,1 +1,25 @@
-<p>atividades works!</p>
+<nz-table #userTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lauro</td>
+      <td>32</td>
+      <td>Rua Andre Woss</td>
+      <td>
+        <button nz-button nzType="primary">
+          <span nz-icon nzType="edit" nzTheme="outline"></span>
+        </button>
+        <button nz-button nzType="primary" nzDanger>
+          <span nz-icon nzType="delete" nzTheme="outline"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

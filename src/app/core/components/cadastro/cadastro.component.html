@@ -1,1 +1,82 @@
-<p>cadastro works!</p>
+<div class="card">
+  <nz-card style="width: 500px" nzTitle="Registro">
+    <form nz-form [formGroup]="validateForm" class="login-form">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor insira seu nome!">
+          <nz-input-group nzPrefixIcon="smile">
+            <input
+              type="name"
+              nz-input
+              formControlName="name"
+              placeholder="Name"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor insira seu telefone!">
+          <nz-input-group nzPrefixIcon="phone">
+            <input
+              type="phone"
+              nz-input
+              formControlName="telefone"
+              placeholder="Telefone"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor insira seu email!">
+          <nz-input-group nzPrefixIcon="user">
+            <input
+              type="email"
+              nz-input
+              formControlName="email"
+              placeholder="E-mail"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor insira seu endereço!">
+          <nz-input-group nzPrefixIcon="home">
+            <input
+              type="address"
+              nz-input
+              formControlName="endereco"
+              placeholder="Endereço"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor insira sua senha!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input
+              type="password"
+              nz-input
+              formControlName="password"
+              placeholder="Senha"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Confirme sua senha!">
+          <nz-input-group nzPrefixIcon="login">
+            <input type="password" nz-input placeholder="Confirme sua senha" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button
+        nz-button
+        class="login-form-button login-form-margin"
+        [nzType]="'primary'"
+        [nzSize]="'large'"
+        (click)="submitForm()"
+      >
+        Registrar
+      </button>
+    </form>
+  </nz-card>
+</div>

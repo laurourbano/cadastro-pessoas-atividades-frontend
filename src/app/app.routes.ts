@@ -9,11 +9,11 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  { path: 'cadastro', canActivate: [authGuard], component: CadastroComponent },
+  { path: 'cadastro', loadChildren: () => import('./core/components/cadastro/cadastro.module').then(m => m.CadastroModule)},
   {
     path: 'atividades',
     canActivate: [authGuard],
-    component: AtividadesComponent,
+    loadChildren: () => import('./core/components/atividades/atividades.module').then(m => m.AtividadesModule),
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' },
