@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, SimpleChanges } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -29,7 +29,7 @@ import { LoginService } from '../../../services/login.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  authenticated = false;
+
   validateForm: FormGroup<{
     email: FormControl<string>;
     password: FormControl<string>;
@@ -51,9 +51,7 @@ export class LoginComponent {
           this.validateForm.controls.password.value,
         )
         .subscribe((res) => {
-          console.log(res);
           if (res) {
-            this.authenticated = true;
             this.router.navigate(['/atividades']);
           } else {
             this.validateForm.controls.password.setErrors({ invalid: true });
@@ -61,4 +59,5 @@ export class LoginComponent {
         });
     }
   }
+
 }
