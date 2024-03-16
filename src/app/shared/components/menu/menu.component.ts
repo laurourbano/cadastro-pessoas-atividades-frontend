@@ -19,6 +19,7 @@ import { LoginService } from '../../../services/login.service';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
+  @Input() autenticado!: boolean;
 
   constructor(
     private router: Router,

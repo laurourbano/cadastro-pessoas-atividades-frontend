@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AtividadesRoutingModule } from './atividades-routing.module';
+import { Atividade } from '../../../interfaces/atividade';
 
 
 @NgModule({
@@ -9,6 +10,7 @@ import { AtividadesRoutingModule } from './atividades-routing.module';
   imports: [
     CommonModule,
     AtividadesRoutingModule
-  ]
+  ],
 })
-export class AtividadesModule { }
+export class AtividadesModule {
+}
