@@ -60,7 +60,6 @@ export class CadastroComponent {
           this.validateForm.controls.password.value,
         )
         .subscribe((res) => {
-          console.log(res);
           if (res) {
             this.router.navigate(['/login']);
           } else {

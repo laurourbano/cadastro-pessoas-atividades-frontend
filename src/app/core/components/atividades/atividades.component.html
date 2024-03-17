@@ -1,52 +1,20 @@
-<button nz-button nzType="primary">
-  <span nz-icon nzType="plus" nzTheme="outline"></span>
-</button>
-<nz-table
-  #rowSelectionTable
-  nzShowSizeChanger
-  [nzData]="listOfData"
-  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
->
+<nz-table>
   <thead>
     <tr>
-      <th
-        [nzSelections]="listOfSelection"
-        [(nzChecked)]="checked"
-        [nzIndeterminate]="indeterminate"
-        (nzCheckedChange)="onAllChecked($event)"
-      ></th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Data de início</th>
-      <th>Data de término</th>
-      <th>Ações</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Data Início</th>
+      <th>Data Fim</th>
     </tr>
   </thead>
   <tbody>
-    @for (data of listOfData; track data.id) {
-      <tr>
-        <td
-          [nzChecked]="setOfCheckedId.has(data.id)"
-          (nzCheckedChange)="onItemChecked(data.id, $event)"
-        ></td>
-        <td>{{ data.name }}</td>
-        <td>{{ data.description }}</td>
-        <td>{{ data.start_date | date }}</td>
-        <td>{{ data.end_date | date }}</td>
-        <td>
-          <button nz-button nzType="primary" nzSize="small">
-            <span nz-icon nzType="edit" nzTheme="outline"></span>
-          </button>
-          <button nz-button nzType="primary" nzSize="small" nzDanger>
-            <span nz-icon nzType="delete" nzTheme="outline"></span>
-          </button>
-        </td>
-      </tr>
-    } @empty {
-      <tr>
-        <td [attr.colspan]="4">Sem atividades para você, cadastre novas atividades!</td>
-      </tr>
-    }
+    @for (atividade of atividades | async; track atividade.id){
+    <tr>
+      <td>{{ atividade.name }}</td>
+      <td>{{ atividade.description }}</td>
+      <td>{{ atividade.start_date | date }}</td>
+      <td>{{ atividade.end_date | date }}</td>
+    </tr>
+  }
   </tbody>
 </nz-table>
-

@@ -11,7 +11,10 @@ export class LoginService {
   constructor(private httpClient: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.httpClient.post<any>(`${this.API}/login`, { email, password });
+    return this.httpClient.post<any>(`${this.API}/login`, {
+      email,
+      password,
+    });
   }
 
   logout() {
@@ -25,7 +28,7 @@ export class LoginService {
     endereco: string,
     password: string,
   ) {
-    return this.httpClient.post<any>(`${this.API}/users`, {
+    return this.httpClient.post<any>(`${this.API}/api/users`, {
       name,
       telefone,
       email,

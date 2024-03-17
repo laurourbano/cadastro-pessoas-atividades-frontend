@@ -9,6 +9,7 @@ import pt from '@angular/common/locales/pt';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 registerLocaleData(pt);
 
@@ -21,6 +22,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     importProvidersFrom(RouterModule.forRoot(routes)),
-    importProvidersFrom(HttpClientModule)
+    importProvidersFrom(HttpClientModule),
   ],
 };

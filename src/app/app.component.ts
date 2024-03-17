@@ -1,5 +1,5 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './shared/components/menu/menu.component';
 
 @Component({
@@ -12,11 +12,10 @@ import { MenuComponent } from './shared/components/menu/menu.component';
 export class AppComponent {
   @Input() autenticado!: boolean;
   constructor() {
-    console.log(this.autenticado)
+    console.log(this.autenticado);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes['autenticado'].currentValue)
+    console.log(changes['autenticado'].currentValue);
   }
-
 }
