@@ -7,7 +7,7 @@ import { AsyncPipe, DatePipe, JsonPipe } from '@angular/common';
 import { AtividadesService } from '../../../services/atividades.service';
 import { Atividade } from '../../../interfaces/atividade';
 import { Observable, map, tap } from 'rxjs';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'AtividadesComponent',
@@ -26,29 +26,25 @@ import { RouterModule } from '@angular/router';
   ],
 })
 export class AtividadesComponent implements OnInit {
-  id: number = 10;
-  atividades = new Observable<Atividade[]>();
+  id!: number;
+  atividades:Atividade[] = [];
   atividade!: Atividade;
 
-  constructor(private atividadesService: AtividadesService) {}
+  constructor(
+    private atividadesService: AtividadesService,
+    private route: ActivatedRoute,
+  ) {}
   ngOnInit(): void {
-    this.atividades = this.atividadesService.listarAtividades().pipe(
-      map((response: any) => {
-        return response;
-      }),
-    );
+    this.id = this.route.snapshot.params['id'];
 
-    this.atividadesService
-      .buscarUmaAtividade(this.id)
-      .subscribe((response: any) => {
-        this.atividade = {
-          id: response.id,
-          name: response.name,
-          description: response.description,
-          start_date: response.start_date,
-          end_date: response.end_date,
-        } as Atividade;
-      });
+    this.atividadesService.listarAtividades(this.id).subscribe((activities) => {
+      this.atividades = activities;
+    });
+
+    this.atividadesService.buscarUmaAtividade(this.id).subscribe((activity) => {
+      this.atividade = activity;
+    });
+
   }
 
   deletarAtividade(id: number) {

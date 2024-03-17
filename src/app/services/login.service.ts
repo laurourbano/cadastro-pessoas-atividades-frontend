@@ -11,10 +11,10 @@ export class LoginService {
   constructor(private httpClient: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.httpClient.post<any>(`${this.API}/login`, {
+      return this.httpClient.post<any>(`${this.API}/login`, {
       email,
-      password,
-    });
+        password,
+      });
   }
 
   logout() {

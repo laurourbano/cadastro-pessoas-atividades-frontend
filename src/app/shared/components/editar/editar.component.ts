@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -33,6 +33,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
   styleUrl: './editar.component.scss',
 })
 export class EditarComponent {
+  id!: number;
   validateForm: FormGroup<{
     name: FormControl<string>;
     description: FormControl<string>;
@@ -47,8 +48,13 @@ export class EditarComponent {
   constructor(
     private atividadesService: AtividadesService,
     private router: Router,
+    private route: ActivatedRoute,
     private fb: NonNullableFormBuilder,
   ) {}
+
+  ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+  }
 
   submitForm(): void {
     if (this.validateForm.valid) {

@@ -14,7 +14,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'atividades',
+    path: 'atividades/:id',
     loadChildren: () =>
       import('./core/components/atividades/atividades.module').then(
         (m) => m.AtividadesModule,

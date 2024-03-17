@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Atividade } from '../interfaces/atividade';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AtividadesService {
   private readonly API = environment.appConfig.API_URL;
-  private id: number = 10;
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+  ) {}
 
-  listarAtividades() {
+  listarAtividades(id:number): Observable<Atividade[]> {
     return this.http
-      .get<Atividade[]>(`${this.API}/activities/${this.id}/users`)
-      .pipe(
-        map((response: any) => {
-          return response.activities
-        }),
-      );
+      .get<Atividade[]>(`${this.API}/activities/user/${id}`);
   }
 
   buscarUmaAtividade(id: number) {

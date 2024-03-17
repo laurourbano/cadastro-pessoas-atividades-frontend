@@ -21,7 +21,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (atividade of atividades | async; track atividade.id) {
+    @for (atividade of atividades; track atividade.id) {
       <tr>
         <td>{{ atividade.name }}</td>
         <td>{{ atividade.description }}</td>
