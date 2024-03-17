@@ -17,8 +17,7 @@ export class AtividadesService {
       .get<Atividade[]>(`${this.API}/activities/${this.id}/users`)
       .pipe(
         map((response: any) => {
-          console.log(response.activities);
-          return response.activities;
+          return response.activities
         }),
       );
   }
@@ -33,5 +32,9 @@ export class AtividadesService {
 
   editarAtividade(id: number, atividade: Atividade) {
     return this.http.put<Atividade>(`${this.API}/activities/${id}`, atividade);
+  }
+
+  adicionarAtividade(atividade: Atividade) {
+    return this.http.post<Atividade>(`${this.API}/activities`, atividade);
   }
 }

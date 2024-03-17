@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -13,6 +19,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
+import { ScriptSnapshot } from 'typescript';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -29,6 +36,7 @@ import { LoginService } from '../../../services/login.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  @Input() idUsuario!: number;
 
   validateForm: FormGroup<{
     email: FormControl<string>;
@@ -52,12 +60,11 @@ export class LoginComponent {
         )
         .subscribe((res) => {
           if (res) {
-            this.router.navigate(['/atividades']);
+            this.router.navigate(['/atividades']);           
           } else {
             this.validateForm.controls.password.setErrors({ invalid: true });
           }
         });
     }
   }
-
 }

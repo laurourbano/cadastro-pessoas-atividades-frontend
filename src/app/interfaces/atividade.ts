@@ -1,5 +1,5 @@
 export interface Atividade {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   start_date: Date;
