@@ -1,3 +1,12 @@
+<a
+  nz-button
+  nzType="primary"
+  nzSize="small"
+  [routerLink]="['/adicionar']"
+  routerLinkActive="router-link-active"
+  >Adicionar</a
+>
+
 <nz-table>
   <thead>
     <tr>
@@ -5,16 +14,34 @@
       <th>Descrição</th>
       <th>Data Início</th>
       <th>Data Fim</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
-    @for (atividade of atividades | async; track atividade.id){
-    <tr>
-      <td>{{ atividade.name }}</td>
-      <td>{{ atividade.description }}</td>
-      <td>{{ atividade.start_date | date }}</td>
-      <td>{{ atividade.end_date | date }}</td>
-    </tr>
-  }
+    @for (atividade of atividades | async; track atividade.id) {
+      <tr>
+        <td>{{ atividade.name }}</td>
+        <td>{{ atividade.description }}</td>
+        <td>{{ atividade.start_date | date }}</td>
+        <td>{{ atividade.end_date | date }}</td>
+        <td>
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="small"
+            [routerLink]="['/editar', atividade.id]"
+            >Editar</a
+          >
+          <a
+            nz-button
+            nzType="primary"
+            nzDanger
+            nzSize="small"
+            (click)="deleteAtividade(atividade.id)"
+            >Excluir</a
+          >
+        </td>
+      </tr>
+    }
   </tbody>
 </nz-table>

@@ -13,12 +13,25 @@ export class AtividadesService {
   constructor(private http: HttpClient) {}
 
   listarAtividades() {
-    return this.http.get<Atividade[]>(`${this.API}/activities/${this.id}/users`)
+    return this.http
+      .get<Atividade[]>(`${this.API}/activities/${this.id}/users`)
       .pipe(
         map((response: any) => {
-          console.log(response.activities)
+          console.log(response.activities);
           return response.activities;
-        })
+        }),
       );
+  }
+
+  buscarUmaAtividade(id: number) {
+    return this.http.get<Atividade>(`${this.API}/activities/${id}`);
+  }
+
+  deletarAtividade(id: number) {
+    return this.http.delete(`${this.API}/activities/${id}`);
+  }
+
+  editarAtividade(id: number, atividade: Atividade) {
+    return this.http.put<Atividade>(`${this.API}/activities/${id}`, atividade);
   }
 }
