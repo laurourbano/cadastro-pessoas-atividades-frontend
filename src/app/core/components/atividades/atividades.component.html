@@ -4,10 +4,13 @@
   nzSize="small"
   [routerLink]="['/adicionar']"
   routerLinkActive="router-link-active"
-  >Adicionar</a
+  >        <span nz-icon nzType="plus" nzTheme="outline"></span>
+</a
 >
 
-<nz-table>
+
+<nz-table
+>
   <thead>
     <tr>
       <th>Nome</th>
@@ -30,7 +33,8 @@
             nzType="primary"
             nzSize="small"
             [routerLink]="['/editar', atividade.id]"
-            >Editar</a
+            >        <span nz-icon nzType="edit" nzTheme="outline"></span>
+</a
           >
           <a
             nz-button
@@ -38,7 +42,8 @@
             nzDanger
             nzSize="small"
             (click)="atividade.id && deletarAtividade(atividade.id)"
-            >Excluir</a
+            >        <span nz-icon nzType="delete" nzTheme="outline"></span>
+</a
           >
         </td>
       </tr>
